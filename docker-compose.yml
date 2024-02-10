@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"  # Adjust port mapping as needed
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/demo
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: 103anninh
+      # ... other Spring Boot environment variables
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:latest
+    ports:
+      - "5432:5432"  # Map container port to host port
+    environment:
+      POSTGRES_PASSWORD: 103anninh  # Use a strong password for production
+      POSTGRES_DB: demo  # Use the correct database name
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # Persist data volume
+
+volumes:
+  postgres_data:
