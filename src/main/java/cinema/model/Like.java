@@ -18,7 +18,7 @@ public class Like {
     }
 
     @ManyToOne
-    @JoinColumn(name="movieid", nullable=false)
+    @JoinColumn(name="movieid", nullable=false,insertable=false, updatable=false)
     private Movie movie;
     public LikeId getId() {
         return id;

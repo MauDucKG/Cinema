@@ -25,9 +25,9 @@ public class Movie {
 
     @ManyToMany
     @JoinTable(
-            name = "category_movie",
-            joinColumns = @JoinColumn(name = "movie_id"),
-            inverseJoinColumns = @JoinColumn(name = "category_id")
+            name = "categorymovie",
+            joinColumns = @JoinColumn(name = "movieid"),
+            inverseJoinColumns = @JoinColumn(name = "categoryid")
     )
     private List<Category> categories;
     public Movie(int movieId, String name, boolean status, double price, String description, java.sql.Date createdDate, String image) {
