@@ -16,7 +16,7 @@ public class Comment {
     private int userid;
 
     @ManyToOne
-    @JoinColumn(name="movieid", nullable=false)
+    @JoinColumn(name="movieid", nullable=false,insertable=false, updatable=false)
     private Movie movie;
     @Column(name = "content", columnDefinition = "TEXT")
     private String content;
