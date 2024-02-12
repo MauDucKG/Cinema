@@ -1,6 +1,8 @@
 package cinema.model;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "movie")
 public class Movie {
@@ -15,7 +17,19 @@ public class Movie {
     private String image;
 
     // private LocalTime Time;
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
+    private List<Like> likes;
 
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
+    private List<Comment> comments;
+
+    @ManyToMany
+    @JoinTable(
+            name = "category_movie",
+            joinColumns = @JoinColumn(name = "movie_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id")
+    )
+    private List<Category> categories;
     public Movie(int movieId, String name, boolean status, double price, String description, java.sql.Date createdDate, String image) {
         this.movieId = movieId;
         this.name = name;
@@ -84,5 +98,29 @@ public class Movie {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public List<Like> getLikes() {
+        return likes;
+    }
+
+    public void setLikes(List<Like> likes) {
+        this.likes = likes;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
     }
 }

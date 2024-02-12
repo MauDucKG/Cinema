@@ -25,7 +25,7 @@ public class LikeService {
     }
 
 
-    public int totalLikeByMovie(Long movieId) {
+    public int totalLikeByMovie(Integer movieId) {
         List<Like> likes = likeRepository.findAll();
         List<Like> filteredLikes = likes.stream()
                 .filter(like -> like.getId().getMovieId() == movieId)

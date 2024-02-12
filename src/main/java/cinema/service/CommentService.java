@@ -31,7 +31,7 @@ public class CommentService {
     public void deleteById(int commentId) {
         commentRepository.deleteById(commentId);
     }
-    public List<Comment> getCommentByMovieId(Long movieId) {
+    public List<Comment> getCommentByMovieId(Integer movieId) {
         List<Comment> comments = commentRepository.findAll();
         List<Comment> filteredComments = comments.stream()
                 .filter(like -> like.getMovieId() == movieId)

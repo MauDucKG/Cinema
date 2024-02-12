@@ -17,6 +17,9 @@ public class Like {
     public Like() {
     }
 
+    @ManyToOne
+    @JoinColumn(name="movieid", nullable=false)
+    private Movie movie;
     public LikeId getId() {
         return id;
     }

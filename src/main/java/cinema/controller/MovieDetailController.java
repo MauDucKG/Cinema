@@ -25,7 +25,7 @@ public class MovieDetailController {
     private LikeService likeService;
 
     @GetMapping("/likeandcomment/{movieId}")
-    public Map<String, Object> getLikeAndComment(@PathVariable Long movieId){
+    public Map<String, Object> getLikeAndComment(@PathVariable Integer movieId){
         int totalLike = likeService.totalLikeByMovie(movieId);
         List<Comment> listComment = commentService.getCommentByMovieId(movieId);
 
